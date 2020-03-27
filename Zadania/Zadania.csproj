@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A10D4B9B-B1FA-444E-93FE-142826114429}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Zadania</RootNamespace>
+    <AssemblyName>Zadania</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="doc3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="doc3.Designer.cs">
+      <DependentUpon>doc3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="doc3Class\Global.cs" />
+    <Compile Include="doc3Class\Obiczenia.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Switch.cs" />
+    <Compile Include="zadanie1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie1.Designer.cs">
+      <DependentUpon>zadanie1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie2.Designer.cs">
+      <DependentUpon>zadanie2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie3.Designer.cs">
+      <DependentUpon>zadanie3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie4.Designer.cs">
+      <DependentUpon>zadanie4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie5.Designer.cs">
+      <DependentUpon>zadanie5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie6.Designer.cs">
+      <DependentUpon>zadanie6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie7.Designer.cs">
+      <DependentUpon>zadanie7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="zadanie8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zadanie8.Designer.cs">
+      <DependentUpon>zadanie8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZadModel.cs" />
+    <Compile Include="ZadObliczenia.cs" />
+    <EmbeddedResource Include="doc3.resx">
+      <DependentUpon>doc3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="zadanie1.resx">
+      <DependentUpon>zadanie1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie2.resx">
+      <DependentUpon>zadanie2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie3.resx">
+      <DependentUpon>zadanie3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie4.resx">
+      <DependentUpon>zadanie4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie5.resx">
+      <DependentUpon>zadanie5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie6.resx">
+      <DependentUpon>zadanie6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie7.resx">
+      <DependentUpon>zadanie7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zadanie8.resx">
+      <DependentUpon>zadanie8.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="zadania\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
