@@ -24,33 +24,53 @@ namespace Zadania
             if (this.exbl)
             {
                 Console.WriteLine(resListBox.TopIndex);
-                resListBox.Items.Remove("k must be interger and greater then 0!!!");
+                resListBox.Items.Remove("k must be interger and from 1 to 6!!!");
                 resListBox.Items.Remove("Please try again.");
                 this.exbl = false;
             }
-            double x1 = 0, x2 = 0, z = 0, k = 0;
+            double k = 0;
             try
             {
                 k = Convert.ToDouble(kBox.Text);
-                if (k < 1 || k - Math.Round(k) != 0)
+                if (k < 1 || k - Math.Round(k) != 0 || k > 6)
                     throw new Exception("kEr");
             }
             catch (Exception ex)
             {
                 if (ex.Message == "kEr")
-                    resListBox.Items.Add("k must be interger and greater then 0!!!");
+                    resListBox.Items.Add("k must be interger and from 1 to 6!!!");
                 else
                     resListBox.Items.Add("Please try again.");
                 this.exbl = true;
                 return;
             }
-            var res = ZadObliczenia.zadanie5(Convert.ToDouble(kBox.Text));
+            
+            TooLongEx myex = null;
 
+
+            ZadGlobal res;
+            try
+            {
+                res = ZadObliczenia.zadanie5(Convert.ToDouble(kBox.Text));
+            }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                res = exception.ZGl;
+            }
+
+            
             for (int i = 0; i < res.ListOfSingleCount.Count(); i++)
             {
                 resListBox.Items.Add((i > 1? AreaType.Trapezoid:AreaType.Rectangle) + "   area" + (i % 2 == 0? " y=x^3":" y=x^2") + ": " + res.ListOfSingleCount[i].Area + 
                     "    x1: " + res.ListOfSingleCount[i].X1 + "     x2: " + res.ListOfSingleCount[i].X2);
             }
+
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
+            
             resListBox.Items.Add("-------------------------------------");
         }
 

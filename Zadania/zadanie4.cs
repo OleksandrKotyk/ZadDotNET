@@ -49,7 +49,7 @@ namespace Zadania
                 if (ex.Message == "xEr")
                     resListBox.Items.Add("x1 is greater or equal then x2");
                 else if (ex.Message == "kEr")
-                    resListBox.Items.Add("k must be interger and greater then 0!!!");
+                    resListBox.Items.Add("k must be integer and greater then 0!!!");
                 else if (ex.Message == "zEr")
                     resListBox.Items.Add("z is equal to 0");
                 else
@@ -58,15 +58,45 @@ namespace Zadania
                 return;
             }
 
-
-            ZadGlobal res = ZadObliczenia.zadanie4(x1, x2, z, k);
-
-            resListBox.Items.Add("Podzelne przez z " + AreaType.Trapezoid + ": " + res.ListOfSingleCount[0].Area +"  x1: " + res.ListOfSingleCount[0].X1 +
-                "  x2: " + res.ListOfSingleCount[0].X2);
-            resListBox.Items.Add("Podzelne przez z " + AreaType.Rectangle + ": " + res.ListOfSingleCount[1].Area + "  x1: " + res.ListOfSingleCount[1].X1 +
-                "  x2: " + res.ListOfSingleCount[1].X2);
-            resListBox.Items.Add("------------------------");
+            
+            TooLongEx myex = null;
+            ZadGlobal res;
+            try
+            {
+                res = ZadObliczenia.zadanie4(x1, x2, z, k);
+            }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                res = exception.ZGl;
+            }
+            catch
+            {
+                resListBox.Items.Add("Za duże liczby!!! Prawdopodobnie trzeba zmienić k.");
+                resListBox.Items.Add("------------------------------");
+                return;
+            }
+            
+            
+            
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+                resListBox.Items.Add("------------------------");
+            }
+            else
+            {
+                for (int i = 0; i < res.ListOfSingleCount.Count(); i++)
+                {
+                    resListBox.Items.Add("Podzelne przez z " + res.ListOfSingleCount[i].AreaType + ": " + res.ListOfSingleCount[i].Area +"  x1: " + res.ListOfSingleCount[i].X1 +
+                                         "  x2: " + res.ListOfSingleCount[i].X2);
+                }
+                resListBox.Items.Add("------------------------");
+            }
         }
+        
+        
+        
 
         private void doc3_Click(object sender, EventArgs e)
         {

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,10 +23,21 @@ namespace Zadania
         {
             Global global;
             Obiczenia obliczenia = new Obiczenia();
-            global = obliczenia.Wykonaj(Convert.ToInt32(inputNUD.Value));
-            for (int i = 0; i < inputNUD.Value; i++)
+            TooLongEx myex = null;
+            try
             {
-                resLBox.Items.Add("==result# " + i.ToString() + "== value1=" + global.ListOfResults[i].LosujLiczby.Liczba1.ToString() +
+                global = obliczenia.Wykonaj(Convert.ToInt32(inputNUD.Value));
+            }
+            catch (TooLongEx exception)
+            {
+                global = exception.Gl;
+                myex = exception;
+            }
+
+
+            for (int i = 0; i < global.ListOfResults.Count(); i++)
+            {
+                resLBox.Items.Add("==result# " + (i+1).ToString() + "== value1=" + global.ListOfResults[i].LosujLiczby.Liczba1.ToString() +
                     "   value2=" + global.ListOfResults[i].LosujLiczby.Liczba2.ToString());
                 if ((double)global.ListOfResults[i].Potegowanie == double.PositiveInfinity)
                     resLBox.Items.Add("suma=" + global.ListOfResults[i].Dodawanie.ToString() + "   roznica=" + global.ListOfResults[i].Odejmowanie.ToString() +
@@ -35,6 +47,11 @@ namespace Zadania
                     resLBox.Items.Add("suma=" + global.ListOfResults[i].Dodawanie.ToString() + "   roznica=" + global.ListOfResults[i].Odejmowanie.ToString() +
                         "   iloczyn=" + global.ListOfResults[i].Mnozenie.ToString() + "   iloraz=" + global.ListOfResults[i].Dzielenie.ToString() +
                         "   potegowanie=" + global.ListOfResults[i].Potegowanie.ToString());
+            }
+
+            if (myex != null)
+            {
+                resLBox.Items.Add(myex.Message);
             }
         }
 

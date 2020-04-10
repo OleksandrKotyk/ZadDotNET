@@ -39,12 +39,15 @@ namespace Zadania.doc3Class
 
         public Global Wykonaj(int numberOfIterations)
         {
+            var now  = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             Calculator calcResult;
             List<Calculator> ListOfCalc = new List<Calculator>();
             for(int i =0; i < numberOfIterations; i++)
             {
                 calcResult = SingleCalculation();
                 ListOfCalc.Add(calcResult);
+                if(DateTimeOffset.Now.ToUnixTimeMilliseconds() - now == 20)
+                    throw new TooLongEx(new Global(ListOfCalc), "Obliczenia zajęły za dużo czasu!");
             }
             return new Global(ListOfCalc);
         }

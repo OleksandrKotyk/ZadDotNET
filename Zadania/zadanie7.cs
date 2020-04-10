@@ -37,7 +37,7 @@ namespace Zadania
                 if (x1 >= x2)
                     throw new Exception("xEr");
                 if (z == 0)
-                    throw new Exception("zEx");
+                    throw new Exception("zEx"); 
             }
             catch (Exception ex)
             {
@@ -51,15 +51,32 @@ namespace Zadania
                 return;
             }
 
-            
-
-            ZadGlobal res = ZadObliczenia.Zadanie7(z, x1, x2);
-            if (res.ListOfSingleCount[0].N != -1 && res.ListOfSingleCount[1].N != -1)
+            TooLongEx myex = null;
+            ZadGlobal res;
+            try
             {
-                resListBox.Items.Add(AreaType.Trapezoid + ": " + res.ListOfSingleCount[0].N);
-                resListBox.Items.Add(AreaType.Rectangle + ": " + res.ListOfSingleCount[1].N);
-                resListBox.Items.Add("----------------");
+                res = ZadObliczenia.Zadanie7(z, x1, x2);
             }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                res = exception.ZGl;
+            }
+
+            for (int i = 0; i < res.ListOfSingleCount.Count(); i++)
+            {
+                if (res.ListOfSingleCount[i].N != -1)
+                {
+                    resListBox.Items.Add(res.ListOfSingleCount[i].AreaType + ": " + res.ListOfSingleCount[i].N + "    Area: " + res.ListOfSingleCount[i].Area);
+                }
+            }
+
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
+            
+            resListBox.Items.Add("----------------");
         }
 
         private void doc3_Click(object sender, EventArgs e)

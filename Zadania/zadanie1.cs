@@ -23,11 +23,7 @@ namespace Zadania
         {
             Console.WriteLine(AreaType.Trapezoid);
 
-            if (zBox.Text == "")
-            {
-                zBox.Text = "100";
-            }
-
+            
             if (this.exbl)
             {
                 Console.WriteLine(resListBox.TopIndex);
@@ -39,6 +35,10 @@ namespace Zadania
             try
             {
                 double z = Convert.ToDouble(zBox.Text);
+                if (z < 0 || z > 100)
+                {
+                    throw new Exception();
+                }
             }
             catch
             {
@@ -46,23 +46,47 @@ namespace Zadania
                 this.exbl = true;
                 return;
             }
+            
+            
             double minRes = trueRes - trueRes / 100 * Convert.ToDouble(zBox.Text);
             double maxRes = trueRes + trueRes / 100 * Convert.ToDouble(zBox.Text);
-            int M = Convert.ToInt32(mNUD.Value);
-            ZadGlobal gl = new ZadGlobal(ZadObliczenia.Oblicznie(M, x => x*x));
+            ZadGlobal gl;
+            TooLongEx myex = null;
+            
+            int m = Convert.ToInt32(mNUD.Value);
+            try
+            {
+                gl = ZadObliczenia.Zadanie1(m, x => x * x);
+            }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                gl = exception.ZGl;
+            }
+
 
             for (int i = 0; i < gl.ListOfSingleCount.Count; i++)
             {
                 SingleCount g = gl.ListOfSingleCount[i];
                 if (g.Area >= minRes && g.Area <= maxRes)
-                    resListBox.Items.Add(g.AreaType.ToString() + ": " + g.Area.ToString());
-                if(i%2 == 1)
                 {
+                    resListBox.Items.Add("# " + (i + 1));
+                    resListBox.Items.Add(g.AreaType.ToString() + ": " + g.Area.ToString());
                     resListBox.Items.Add("------------------------------");
                 }
             }
+            
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
         }
 
+        
+        
+        
+        
+        
         private void doc3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new doc3();

@@ -25,7 +25,7 @@ namespace Zadania
             if (this.exbl)
             {
                 resListBox.Items.Remove("m must be interger and greater then 0!!!");
-                resListBox.Items.Remove("k must be interger and greater then 0!!!");
+                resListBox.Items.Remove("k must be interger and from 1 to 6!!!");
                 resListBox.Items.Remove("Please try again!!!");
                 this.exbl = false;
             }
@@ -34,31 +34,47 @@ namespace Zadania
             {
                 m = Convert.ToDouble(mBox.Text);
                 k = Convert.ToDouble(kBox.Text);
-                if (k < 1 || k - Math.Round(k) != 0)
+                if (k < 1 || k - Math.Round(k) != 0 || k > 6)
                     throw new Exception("kEr");
                 if (m <=0 || m - Math.Round(m) != 0)
                     throw new Exception("mEx");
             }
             catch (Exception ex)
             {
+                this.exbl = true;
                 if (ex.Message == "kEr")
-                    resListBox.Items.Add("k must be interger and greater then 0!!!");
-                if (ex.Message == "mEx")
+                    resListBox.Items.Add("k must be interger and from 1 to 6!!!");
+                else if (ex.Message == "mEx")
                     resListBox.Items.Add("m must be interger and greater then 0!!!");
                 else
                     resListBox.Items.Add("Please try again!!!");
-                this.exbl = true;
                 return;
             }
 
-           
-          
-            ZadGlobal res = ZadObliczenia.Zadanie6(m, k);
+
+            TooLongEx myex = null;
+            ZadGlobal res;
+            try
+            {
+                res = ZadObliczenia.Zadanie6(m, k);
+            }
+            catch (TooLongEx exception)
+            {
+                res = exception.ZGl;
+                myex = exception;
+            }
+             
             
             for(int i = 0; i < 2; i++)
                 resListBox.Items.Add(res.ListOfSingleCount[i].AreaType + "----X1: " +
                     res.ListOfSingleCount[i].X1.ToString() + "  X2: " + res.ListOfSingleCount[i].X2.ToString() + 
                     "  Roz: " + res.ListOfSingleCount[i].Area.ToString());
+            
+            
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
             resListBox.Items.Add("-------------------");
             
         }

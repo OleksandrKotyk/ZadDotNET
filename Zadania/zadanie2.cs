@@ -51,25 +51,43 @@ namespace Zadania
                 this.exbl = true;
                 return;
             }
-
+            
+            TooLongEx myex = null;
+            ZadGlobal res;
             bool test1 = false, test2 = false;
-            ZadGlobal res = ZadObliczenia.Zadanie2(x => x * x * x, z, 25000000, out test1, out test2);
+            try
+            {
+                res = ZadObliczenia.Zadanie2(x => x * x * x, z, 25000000, out test1, out test2);
+            }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                res = exception.ZGl;
+            }
+            
             if (!test1 && res.ListOfSingleCount[0].N != -1)
             {
                 resListBox.Items.Add("Unreal for Trapezoid!!! Near: " + res.ListOfSingleCount[0].N.ToString());
             }
             else if(res.ListOfSingleCount[0].N != -1)
                 resListBox.Items.Add(AreaType.Trapezoid + ": " + res.ListOfSingleCount[0].N.ToString());
+            
+            
             if (!test2 && res.ListOfSingleCount[1].N != -1)
             {
                 resListBox.Items.Add("Unreal for Rectangle!!! Near: " + res.ListOfSingleCount[1].N.ToString());
-                resListBox.Items.Add("If you want to have a real result try z = 0,01, or something else!!!");
+                //resListBox.Items.Add("If you want to have a real result try z = 0,01, or something else!!!");
             }
             else if (res.ListOfSingleCount[1].N != -1)
                 resListBox.Items.Add(AreaType.Rectangle + ": " + res.ListOfSingleCount[1].N.ToString());
-            else
-                return;
+
+            
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
             resListBox.Items.Add("------------------------------------------------");
+            
         }
 
         private void zadanie8_Load(object sender, EventArgs e)

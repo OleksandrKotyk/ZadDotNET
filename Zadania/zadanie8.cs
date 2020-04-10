@@ -45,14 +45,28 @@ namespace Zadania
                 return;
             }
 
-            
-            ZadGlobal res = ZadObliczenia.Zadanie8(x => Math.Cos(x), z, 1);
+            TooLongEx myex = null;
+            ZadGlobal res;
+            try
+            {
+                res = ZadObliczenia.Zadanie8(x => Math.Cos(x), z, 1);
+            }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                res = exception.ZGl;
+            }
 
-           
+
             if (res.ListOfSingleCount[0].N != -1)
                 resListBox.Items.Add(AreaType.Trapezoid + ": " + res.ListOfSingleCount[0].N.ToString()); 
             if (res.ListOfSingleCount[1].N != -1)
                 resListBox.Items.Add(AreaType.Rectangle + ": " + res.ListOfSingleCount[1].N.ToString());
+            
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
             resListBox.Items.Add("------------------------------------------------");
         }
 

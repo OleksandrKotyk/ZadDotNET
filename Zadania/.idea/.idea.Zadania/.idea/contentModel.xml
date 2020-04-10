@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\malki\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\malki\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Zadania.-556623372.00" t="ExcludeRecursive" />
+    <e p="C:\Users\malki\Documents\ZadDotNET\Zadania" t="IncludeRecursive">
+      <e p="App.config" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="doc3.cs" t="Include" />
+      <e p="doc3.Designer.cs" t="Include" />
+      <e p="doc3.resx" t="Include" />
+      <e p="doc3Class" t="Include">
+        <e p="Global.cs" t="Include" />
+        <e p="Obiczenia.cs" t="Include" />
+      </e>
+      <e p="Ex.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+        <e p="Resources.Designer.cs" t="Include" />
+        <e p="Resources.resx" t="Include" />
+        <e p="Settings.Designer.cs" t="Include" />
+        <e p="Settings.settings" t="Include" />
+      </e>
+      <e p="Zadania" t="Include" />
+      <e p="Zadania.csproj" t="IncludeRecursive" />
+      <e p="Zadania.sln" t="IncludeFlat" />
+      <e p="zadanie1.cs" t="Include" />
+      <e p="zadanie1.Designer.cs" t="Include" />
+      <e p="zadanie1.resx" t="Include" />
+      <e p="zadanie2.cs" t="Include" />
+      <e p="zadanie2.Designer.cs" t="Include" />
+      <e p="zadanie2.resx" t="Include" />
+      <e p="zadanie3.cs" t="Include" />
+      <e p="zadanie3.Designer.cs" t="Include" />
+      <e p="zadanie3.resx" t="Include" />
+      <e p="zadanie4.cs" t="Include" />
+      <e p="zadanie4.Designer.cs" t="Include" />
+      <e p="zadanie4.resx" t="Include" />
+      <e p="zadanie5.cs" t="Include" />
+      <e p="zadanie5.Designer.cs" t="Include" />
+      <e p="zadanie5.resx" t="Include" />
+      <e p="zadanie6.cs" t="Include" />
+      <e p="zadanie6.Designer.cs" t="Include" />
+      <e p="zadanie6.resx" t="Include" />
+      <e p="zadanie7.cs" t="Include" />
+      <e p="zadanie7.Designer.cs" t="Include" />
+      <e p="zadanie7.resx" t="Include" />
+      <e p="zadanie8.cs" t="Include" />
+      <e p="zadanie8.Designer.cs" t="Include" />
+      <e p="zadanie8.resx" t="Include" />
+      <e p="ZadModel.cs" t="Include" />
+      <e p="ZadObliczenia.cs" t="Include" />
+    </e>
+  </component>
+</project>

@@ -43,11 +43,12 @@ namespace Zadania
                 if(ex.Message == "xEr")
                     resListBox.Items.Add("x1 is greater or equal then x2");
                 else
-                resListBox.Items.Add("Please try again.");
+                    resListBox.Items.Add("Please try again.");
                 this.exbl = true;
                 return;
             }
 
+            
 
             double trueRes = (Math.Pow(x2, 3) / 3) - (Math.Pow(x1, 3) / 3);
             resListBox.Items.Add("Poprawny: " + trueRes);
@@ -57,12 +58,28 @@ namespace Zadania
                 resRg += Math.Pow(trueRes - ZadObliczenia.ProstLicz(x1, x2, (int)Math.Pow(10, i), x => x * x), 2);
             }
 
-            ZadGlobal res = ZadObliczenia.zadanie3(new SingleCount(x1, x2, 0));
+
+            TooLongEx myex = null;
+            ZadGlobal res;
+            try
+            {
+                res = ZadObliczenia.zadanie3(new SingleCount(x1, x2, 0));
+            }
+            catch (TooLongEx exception)
+            {
+                myex = exception;
+                res = exception.ZGl;
+            }
             resListBox.Items.Add("Wynik dla " + res.ListOfSingleCount[1].AreaType + ": " + res.ListOfSingleCount[0].Area);
             resListBox.Items.Add("Błąd dla " + res.ListOfSingleCount[0].AreaType + ": " + Math.Round(Math.Abs(res.ListOfSingleCount[0].Area - trueRes) / (trueRes / 100), 2) + " %");
             resListBox.Items.Add("Wynik dla " + res.ListOfSingleCount[1].AreaType + ": " + res.ListOfSingleCount[1].Area);
             resListBox.Items.Add("Błąd dla " + res.ListOfSingleCount[0].AreaType + ": " + Math.Round(Math.Abs(res.ListOfSingleCount[1].Area - trueRes) / (trueRes / 100), 2) + " %");
             resListBox.Items.Add("------------------------");
+            
+            if (myex != null)
+            {
+                resListBox.Items.Add(myex.Message);
+            }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
